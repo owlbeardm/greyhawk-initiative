@@ -1,7 +1,9 @@
 'use strict';
 // import './src/css/app.css';
+import './src/components/components.module.js';
 
 const initiativeApp = angular.module('initiativeApp', [
+    'app.components'
 ]);
 
 

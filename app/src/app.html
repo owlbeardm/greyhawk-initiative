@@ -19,5 +19,13 @@ Greyhawk Initiative Tracker placeholder
   </div>
 </div>
 
-<pc pcname="'hello'"></pc>
-<pc pcname="'bye'"></pc>
+
+<pc ng-repeat="pc in $ctrl.pcs" pc="pc"></pc>
+
+<button type="button" class="btn btn-primary m-3" ng-click="$ctrl.add()">
+  Add
+</button>
+
+<button type="button" class="btn btn-danger m-3" ng-click="$ctrl.endRound()">
+  End Round
+</button>

@@ -1,31 +1,70 @@
-<div class="container-fluid">
-Greyhawk Initiative Tracker placeholder
+<pageheader title="Greyhawk Initiative Tracker"></pageheader>
+
+<div class="container-fluid m-2">
+  <div class="alert alert-primary" role="alert">
+    Initiative count <strong>{{$ctrl.initiativeCount}}</strong>
+    <div class="btn-group ml-2" role="group">
+      <button type="button" class="btn btn-primary" ng-click="$ctrl.nextCount()">
+        Next
+      </button>
+      <button type="button" class="btn btn-danger" ng-click="$ctrl.endRound()">
+        End Round
+      </button>
+      <!-- <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'active': $ctrl.pc.actions[1]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(1)">m.a.</button> -->
+      <!-- <button type="button" class="btn btn-outline-primary btn-sm" ng-class="{'active': $ctrl.pc.actions[2]}" ng-disabled="$ctrl.pc.actions[0] || $ctrl.pc.actions[1]" ng-click="$ctrl.checkAction(2)">f-r.a.</button> -->
+      <!-- <button type="button" class="btn btn-outline-success btn-sm" ng-class="{'active': $ctrl.pc.actions[3]}" ng-click="$ctrl.checkAction(3)">sw.a</button> -->
+    </div>
+  </div>
+  <!-- <div class="row">
+    Initiative count <strong>{{$ctrl.initiativeCount}}</strong>
+    <button type="button" class="btn btn-primary btn-sm ml-2" ng-click="$ctrl.nextCount()">
+      +
+    </button>
+    <button type="button" class="btn btn-danger ml-4" ng-click="$ctrl.endRound()">
+      End Round
+    </button>
+  </div> -->
+
+  <div class="row mt-4 text-muted">
+    <div class="col-2">
+      Name
+    </div>
+    <div class="col-1">
+      HP
+    </div>
+    <div class="col-1">
+      Init
+    </div>
+    <div class="col-2">
+      Combat Actions
+    </div>
+    <div class="col">
+      Conditions and Effects
+    </div>
+  </div>
+
+  <table>
+    <tbody>
+      <tr>
+        <pc ng-repeat="pc in $ctrl.pcs" pc="pc" initiative-count="$ctrl.initiativeCount"></pc>
+      </tr>
+    </tbody>
+  </table>
+
+  <form name="addPcForm" ng-submit="$ctrl.add()">
+    <div class="row mt-4">
+      <div class="form-group col-2">
+        <label class="col-form-label" for="pcName">Name</label>
+        <input type="text" id="pcName" class="form-control" ng-model="$ctrl.addName"></input>
+      </div>
+      <div class="form-group col-1">
+        <label class="col-form-label" for="pcHp">HP</label>
+        <input type="number" id="pcHp" class="form-control" ng-model="$ctrl.addHp"></input>
+      </div>
+    </div>
+    <div class="form-group">
+      <button ng-click="$ctrl.transferTokens()" type="submit" class="btn btn-primary" ng-disabled="addPcForm.$invalid">Add</button>
+    </div>
+  </form>
+
 </div>
-<div class="row m-1 p-1 text-muted">
-  <div class="col-2">
-    Name
-  </div>
-  <div class="col-1">
-    Hit points
-  </div>
-  <div class="col-1">
-    Initiative
-  </div>
-  <div class="col-2">
-    Combat Actions
-  </div>
-  <div class="col">
-    Conditions and Effects
-  </div>
-</div>
-
-
-<pc ng-repeat="pc in $ctrl.pcs" pc="pc"></pc>
-
-<button type="button" class="btn btn-primary m-3" ng-click="$ctrl.add()">
-  Add
-</button>
-
-<button type="button" class="btn btn-danger m-3" ng-click="$ctrl.endRound()">
-  End Round
-</button>

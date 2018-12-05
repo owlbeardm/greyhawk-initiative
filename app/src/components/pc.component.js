@@ -20,7 +20,8 @@ const PCComponent = {
     PCController
   ],
   bindings: {
-    pc: '<'
+    pc: '<',
+    initiativeCount: '<'
   }
 }
 

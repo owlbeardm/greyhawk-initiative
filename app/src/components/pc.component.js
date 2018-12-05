@@ -7,6 +7,10 @@ function PCController($log) {
     $log.debug('PCController init', ctrl);
   }
 
+  ctrl.checkAction = function(number) {
+    ctrl.pc.actions[number] = !ctrl.pc.actions[number];
+  }
+
 }
 
 const PCComponent = {
@@ -16,7 +20,7 @@ const PCComponent = {
     PCController
   ],
   bindings: {
-    pcname: '<'
+    pc: '<'
   }
 }
 

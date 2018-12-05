@@ -1,0 +1,10 @@
+git stash
+git checkout master
+yarn build
+git checkout gh-pages
+git pull
+cp -a dist/. .
+git add -A
+git commit -am "release"
+git push
+git checkout master

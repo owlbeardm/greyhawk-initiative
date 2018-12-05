@@ -1,23 +1,52 @@
 <div class="row border mt-1 mb-1 p-1 rounded mr-2" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
   <div class="col-2">
-    <div>
-      <input type="text" class="form-control" ng-model="$ctrl.pc.name">
+    <div ng-if="!$ctrl.editNameMode">
+      <span>{{$ctrl.pc.name}}</span>
+      <a href="#" ng-click="$ctrl.editName()" class="ml-1" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
     </div>
+    <form ng-submit="$ctrl.changeName()" ng-if="$ctrl.editNameMode">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" ng-model="$ctrl.name">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-success btn-sm">
+            <span class="fas fa-check"></span>
+          </button>
+          <button type="button" ng-click="$ctrl.editName()" class="btn btn-outline-danger btn-sm">
+            <span class="fas fa-times"></span>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="col-1">
-    <div>
-      <input type="number" class="form-control" ng-model="$ctrl.pc.hp">
+    <div ng-if="!$ctrl.editHpMode">
+      <span>{{$ctrl.pc.hp}}</span>
+      <a href="#" ng-click="$ctrl.editHp()" class="ml-1" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
+      <a href="#" ng-click="$ctrl.editHp()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
     </div>
+    <form ng-submit="$ctrl.changeHp()" ng-if="$ctrl.editHpMode">
+      <div class="input-group input-group-sm">
+        <input type="number" class="form-control" ng-model="$ctrl.hp">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-success btn-sm">
+            <span class="fas fa-check"></span>
+          </button>
+          <button type="button" ng-click="$ctrl.editHp()" class="btn btn-outline-danger btn-sm">
+            <span class="fas fa-times"></span>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="col-1">
-    <input type="number" class="form-control" ng-class="{'is-invalid': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
+    <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
   </div>
   <div class="col">
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-outline-success btn-sm" ng-class="{'active': $ctrl.pc.actions[0]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(0)">s.a.</button>
-      <button type="button" class="btn btn-outline-warning btn-sm" ng-class="{'active': $ctrl.pc.actions[1]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(1)">m.a.</button>
-      <button type="button" class="btn btn-outline-dark btn-sm" ng-class="{'active': $ctrl.pc.actions[2]}" ng-disabled="$ctrl.pc.actions[0] || $ctrl.pc.actions[1]" ng-click="$ctrl.checkAction(2)">f-r.a.</button>
-      <button type="button" class="btn btn-outline-info btn-sm" ng-class="{'active': $ctrl.pc.actions[3]}" ng-click="$ctrl.checkAction(3)">sw.a</button>
+      <button type="button" class="btn btn-outline-success btn-sm" ng-class="{'active': $ctrl.pc.actions[0]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(0)" title="Standard Action">s.a.</button>
+      <button type="button" class="btn btn-outline-warning btn-sm" ng-class="{'active': $ctrl.pc.actions[1]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(1)" title="Move Action">m.a.</button>
+      <button type="button" class="btn btn-outline-dark btn-sm" ng-class="{'active': $ctrl.pc.actions[2]}" ng-disabled="$ctrl.pc.actions[0] || $ctrl.pc.actions[1]" ng-click="$ctrl.checkAction(2)" title="Full-round Action">f-r.a.</button>
+      <button type="button" class="btn btn-outline-info btn-sm" ng-class="{'active': $ctrl.pc.actions[3]}" ng-click="$ctrl.checkAction(3)" title="Swift Action">sw.a</button>
     </div>
   </div>
   <div class="col">

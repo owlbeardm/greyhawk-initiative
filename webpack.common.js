@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -57,6 +58,21 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './app/index.html',
       filename: 'index.html'
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './assets/fav.png',
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false
+      }
     }),
     new ExtractTextPlugin('[name].[contenthash].css'),
     new webpack.HashedModuleIdsPlugin(),

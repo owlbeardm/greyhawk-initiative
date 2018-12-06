@@ -35,6 +35,18 @@ function PCController($log) {
     ctrl.editHpMode = !ctrl.editHpMode;
   }
 
+  ctrl.minusHp = function() {
+    ctrl.pc.hp = ctrl.pc.hp - ctrl.hp;
+    ctrl.editMinusHp();
+  }
+
+  ctrl.editMinusHp = function() {
+    if(!ctrl.minusHpMode){
+      ctrl.hp = 0;
+    }
+    ctrl.minusHpMode = !ctrl.minusHpMode;
+  }
+
 }
 
 const PCComponent = {

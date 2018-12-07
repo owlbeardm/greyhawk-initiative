@@ -1,12 +1,12 @@
-<div class="row border m-1 rounded mr-2 pt-1" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
-  <div class="col-2 align-bottom">
+<div class="row border rounded" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
+  <div class="col-2">
     <div ng-if="!$ctrl.editNameMode" class="align-bottom">
       <span>{{$ctrl.pc.name}}</span>
       <a href="#" ng-click="$ctrl.editName()" class="ml-1" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
     </div>
     <form ng-submit="$ctrl.changeName()" ng-if="$ctrl.editNameMode">
       <div class="input-group input-group-sm">
-        <input type="text" class="form-control" ng-model="$ctrl.name">
+        <input id="changeNameInput" type="text" class="form-control" ng-model="$ctrl.name">
         <div class="input-group-append">
           <button type="submit" class="btn btn-outline-success btn-sm">
             <span class="fas fa-check"></span>
@@ -18,47 +18,70 @@
       </div>
     </form>
   </div>
-  <div class="col-2">
+  <div class="col-3">
     <div class="row">
-      <div class="col-8">
-        <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode">
-          <span>{{$ctrl.pc.hp}}</span>
-          <a href="#" ng-click="$ctrl.editMinusHp()" class="ml-1" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
-          <a href="#" ng-click="$ctrl.editHp()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-6">
+            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode">
+              <span>{{$ctrl.pc.hp}}</span>
+              <a href="#" ng-click="$ctrl.editMinusHp()" class="ml-1" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
+              <a href="#" ng-click="$ctrl.editHp()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+            </div>
+            <form name="changeHp" ng-submit="$ctrl.changeHp()" ng-if="$ctrl.editHpMode">
+              <div class="input-group input-group-sm">
+                <input type="number" class="form-control" ng-model="$ctrl.hp">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-success btn-sm">
+                    <span class="fas fa-check"></span>
+                  </button>
+                  <button type="button" ng-click="$ctrl.editHp()" class="btn btn-outline-danger btn-sm">
+                    <span class="fas fa-times"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <form name="minusHp" ng-submit="$ctrl.minusHp()" ng-if="$ctrl.minusHpMode">
+              <div class="input-group input-group-sm">
+                <input type="number" class="form-control" ng-model="$ctrl.hp">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-success btn-sm">
+                    <span class="fas fa-check"></span>
+                  </button>
+                  <button type="button" ng-click="$ctrl.editMinusHp()" class="btn btn-outline-danger btn-sm">
+                    <span class="fas fa-times"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <div ng-if="!$ctrl.editDexMode">
+              <span>{{$ctrl.pc.dex}}</span>
+              <a href="#" ng-click="$ctrl.editDex()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+            </div>
+            <form name="changeDex" ng-submit="$ctrl.changeDex()" ng-if="$ctrl.editDexMode">
+              <div class="input-group input-group-sm">
+                <input type="number" class="form-control" ng-model="$ctrl.dex">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-success btn-sm">
+                    <span class="fas fa-check"></span>
+                  </button>
+                  <button type="button" ng-click="$ctrl.editDex()" class="btn btn-outline-danger btn-sm">
+                    <span class="fas fa-times"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <form name="changeHp" ng-submit="$ctrl.changeHp()" ng-if="$ctrl.editHpMode">
-          <div class="input-group input-group-sm">
-            <input type="number" class="form-control" ng-model="$ctrl.hp">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-outline-success btn-sm">
-                <span class="fas fa-check"></span>
-              </button>
-              <button type="button" ng-click="$ctrl.editHp()" class="btn btn-outline-danger btn-sm">
-                <span class="fas fa-times"></span>
-              </button>
-            </div>
-          </div>
-        </form>
-        <form name="minusHp" ng-submit="$ctrl.minusHp()" ng-if="$ctrl.minusHpMode">
-          <div class="input-group input-group-sm">
-            <input type="number" class="form-control" ng-model="$ctrl.hp">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-outline-success btn-sm">
-                <span class="fas fa-check"></span>
-              </button>
-              <button type="button" ng-click="$ctrl.editMinusHp()" class="btn btn-outline-danger btn-sm">
-                <span class="fas fa-times"></span>
-              </button>
-            </div>
-          </div>
-        </form>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
       </div>
     </div>
   </div>
-  <div class="col">
+  <div class="col-2">
     <div class="btn-group" role="group">
       <button type="button" class="btn btn-outline-success btn-sm" ng-class="{'active': $ctrl.pc.actions[0]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(0)" title="Standard Action">s.a.</button>
       <button type="button" class="btn btn-outline-warning btn-sm" ng-class="{'active': $ctrl.pc.actions[1]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(1)" title="Move Action">m.a.</button>
@@ -66,7 +89,7 @@
       <button type="button" class="btn btn-outline-info btn-sm" ng-class="{'active': $ctrl.pc.actions[3]}" ng-click="$ctrl.checkAction(3)" title="Swift Action">sw.a</button>
     </div>
   </div>
-  <div class="col">
+  <!-- <div class="col">
     <button ng-click="$ctrl.transferTokens()" class="btn btn-outline-danger float-right"><span class="fas fa-times"></span></button>
-  </div>
+  </div> -->
 </div>

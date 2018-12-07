@@ -1,24 +1,12 @@
 "use strict";
 
-function AppController($log) {
+function AppController($log, focusService) {
   const ctrl = this;
 
   ctrl.$onInit = function() {
     $log.debug("AppController init");
     ctrl.pcs = [];
     ctrl.initiativeCount = 1;
-  }
-
-  ctrl.add = function() {
-    const pc = {
-      name: ctrl.addName,
-      hp: ctrl.addHp,
-      initiative: undefined,
-      actions: [false, false, false, false]
-    }
-    ctrl.pcs.push(pc);
-    ctrl.addName = undefined;
-    ctrl.addHp = undefined;
   }
 
   ctrl.endRound = function() {
@@ -32,12 +20,17 @@ function AppController($log) {
   ctrl.nextCount = function() {
     ctrl.initiativeCount++;
   }
+
+  ctrl.clear = function() {
+    ctrl.pcs = [];
+  }
 }
 
 const AppComponent = {
   template: require('./app.html'),
   controller: [
     '$log',
+    'focusService',
     AppController
   ]
 };

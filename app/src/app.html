@@ -1,25 +1,31 @@
-<pageheader title="Greyhawk Initiative Tracker" subtitle="For Pathfinder RPG"></pageheader>
-
-<div class="alert" role="alert">
-  Initiative count <strong>{{$ctrl.initiativeCount}}</strong>
-  <div class="btn-group ml-2" role="group">
-    <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
-      Next
-    </button>
-    <button type="button" class="btn btn-outline-danger btn-sm" ng-click="$ctrl.endRound()">
-      End Round
-    </button>
-  </div>
-</div>
-
 <div class="container-fluid">
+  <div class="row">
+    <pageheader title="Greyhawk Initiative Tracker" subtitle="For Pathfinder RPG"></pageheader>
+  </div>
+
+  <div class="row">
+    <div class="alert" role="alert">
+      Initiative count <strong>{{$ctrl.initiativeCount}}</strong>
+      <div class="btn-group ml-2" role="group">
+        <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
+          Next
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-sm" ng-click="$ctrl.endRound()">
+          End Round
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="row mt-4 text-muted">
     <div class="col-2">
       Name
     </div>
     <div class="col-3">
       <div class="row">
-        <div class="col-8">
+        <div class="col-9">
           <div class="row">
             <div class="col-6">
               HP
@@ -29,7 +35,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-3">
           Init
         </div>
       </div>
@@ -42,27 +48,8 @@
     </div>
   </div>
 
-  <table>
-    <tbody>
-      <tr>
-        <pc ng-repeat="pc in $ctrl.pcs" pc="pc" initiative-count="$ctrl.initiativeCount"></pc>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <pc ng-repeat="pc in $ctrl.pcs" pc="pc" initiative-count="$ctrl.initiativeCount"></pc>
 
-<form name="addPcForm" ng-submit="$ctrl.add()">
-  <div class="row mt-4">
-    <div class="form-group col-2">
-      <label class="col-form-label" for="pcName">Name</label>
-      <input type="text" id="pcName" class="form-control" ng-model="$ctrl.addName"></input>
-    </div>
-    <div class="form-group col-1">
-      <label class="col-form-label" for="pcHp">HP</label>
-      <input type="number" id="pcHp" class="form-control" ng-model="$ctrl.addHp"></input>
-    </div>
-  </div>
-  <div class="form-group">
-    <button ng-click="$ctrl.transferTokens()" type="submit" class="btn btn-primary" ng-disabled="addPcForm.$invalid">Add</button>
-  </div>
-</form>
+  <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
+
+</div>

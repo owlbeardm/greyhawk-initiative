@@ -1,6 +1,6 @@
 "use strict";
 
-function PCController($log) {
+function PCController($log, focusService) {
   const ctrl = this;
 
   ctrl.$onInit = function() {
@@ -19,8 +19,21 @@ function PCController($log) {
   ctrl.editName = function() {
     if(!ctrl.editNameMode){
       ctrl.name = ctrl.pc.name;
+      focusService.setFocus('changeNameInput');
     }
     ctrl.editNameMode = !ctrl.editNameMode;
+  }
+
+  ctrl.changeDex = function() {
+    ctrl.pc.dex = ctrl.dex;
+    ctrl.editDex();
+  }
+
+  ctrl.editDex = function() {
+    if(!ctrl.editDexMode){
+      ctrl.dex = ctrl.pc.dex;
+    }
+    ctrl.editDexMode = !ctrl.editDexMode;
   }
 
   ctrl.changeHp = function() {
@@ -53,6 +66,7 @@ const PCComponent = {
   template: require('./pc.html'),
   controller: [
     '$log',
+    'focusService',
     PCController
   ],
   bindings: {

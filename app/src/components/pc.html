@@ -1,6 +1,6 @@
-<div class="row border mt-1 mb-1 p-1 rounded mr-2" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
-  <div class="col-2">
-    <div ng-if="!$ctrl.editNameMode">
+<div class="row border m-1 rounded mr-2 pt-1" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
+  <div class="col-2 align-bottom">
+    <div ng-if="!$ctrl.editNameMode" class="align-bottom">
       <span>{{$ctrl.pc.name}}</span>
       <a href="#" ng-click="$ctrl.editName()" class="ml-1" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
     </div>
@@ -67,5 +67,6 @@
     </div>
   </div>
   <div class="col">
+    <button ng-click="$ctrl.transferTokens()" class="btn btn-outline-danger float-right"><span class="fas fa-times"></span></button>
   </div>
 </div>

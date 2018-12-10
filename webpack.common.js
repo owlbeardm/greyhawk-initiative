@@ -78,8 +78,12 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new CopyWebpackPlugin(
       [{
-        from: 'assets/CNAME'
-      }]
+          from: 'assets/CNAME'
+        },
+        {
+          from: 'assets/google989809d758b4217a.html'
+        }
+      ]
     )
   ]
 };

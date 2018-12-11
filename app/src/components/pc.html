@@ -2,7 +2,7 @@
   <div class="col-2">
     <div ng-if="!$ctrl.editNameMode" class="pt-1">
       <span>{{$ctrl.pc.name}}</span>
-      <a href="#" ng-click="$ctrl.editName()" class="ml-1" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+      <a href="#" ng-click="$ctrl.editName()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
     </div>
     <form ng-submit="$ctrl.changeName()" ng-if="$ctrl.editNameMode">
       <div class="input-group input-group-sm">
@@ -25,8 +25,8 @@
           <div class="col-6">
             <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode" class="pt-1">
               <span>{{$ctrl.pc.hp}}</span>
-              <a href="#" ng-click="$ctrl.editMinusHp()" class="ml-1" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
-              <a href="#" ng-click="$ctrl.editHp()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+              <a href="#" ng-click="$ctrl.editMinusHp()" class="badge badge-light ml-auto" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
+              <a href="#" ng-click="$ctrl.editHp()" class="badge badge-light" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
             </div>
             <form name="changeHp" ng-submit="$ctrl.changeHp()" ng-if="$ctrl.editHpMode">
               <div class="input-group input-group-sm">
@@ -58,7 +58,7 @@
           <div class="col-6">
             <div ng-if="!$ctrl.editDexMode" class="pt-1">
               <span>{{$ctrl.pc.dex}}</span>
-              <a href="#" ng-click="$ctrl.editDex()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+              <a href="#" ng-click="$ctrl.editDex()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
             </div>
             <form name="changeDex" ng-submit="$ctrl.changeDex()" ng-if="$ctrl.editDexMode">
               <div class="input-group input-group-sm">

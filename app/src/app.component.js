@@ -16,6 +16,7 @@ function AppController($log, $scope, $window, focusService) {
     ctrl.pcs = (!pcs || !pcs.length) ? [] : pcs;
     $log.debug("AppController ctrl.pcs", ctrl.pcs, pcs);
     ctrl.initiativeCount = 1;
+    ctrl.roundCount = 1;
   }
 
   ctrl.endRound = function() {
@@ -24,10 +25,20 @@ function AppController($log, $scope, $window, focusService) {
       pc.initiative = undefined;
     });
     ctrl.initiativeCount = 1;
+    ctrl.roundCount++;
   }
 
   ctrl.nextCount = function() {
     ctrl.initiativeCount++;
+  }
+
+  ctrl.reset = function() {
+    ctrl.pcs.forEach((pc) => {
+      pc.actions = [false, false, false, false];
+      pc.initiative = undefined;
+    });
+    ctrl.initiativeCount = 1;
+    ctrl.roundCount = 1;
   }
 
   ctrl.clear = function() {

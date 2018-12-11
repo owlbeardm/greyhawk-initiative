@@ -1,17 +1,21 @@
 <div class="container-fluid">
   <div class="row">
-    <pageheader title="Greyhawk Initiative Tracker" subtitle="For Pathfinder RPG"></pageheader>
+    <pageheader title="OwlbearDM Tracker" subtitle="For Every-Round Initiative"></pageheader>
   </div>
 
   <div class="row">
     <div class="alert" role="alert">
-      Initiative count <strong>{{$ctrl.initiativeCount}}</strong>
+      Round <span class="badge badge-light"><strong>{{$ctrl.roundCount}}</strong></span>
+      Initiative count <span class="badge badge-light">{{$ctrl.initiativeCount}}</span>
       <div class="btn-group ml-2" role="group">
         <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
           Next
         </button>
         <button type="button" class="btn btn-outline-danger btn-sm" ng-click="$ctrl.endRound()">
           End Round
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" ng-click="$ctrl.reset()">
+          Reset
         </button>
       </div>
     </div>
@@ -48,10 +52,8 @@
     </div>
   </div>
 
-  <pc ng-repeat="pc in $ctrl.pcs" pc="pc" initiative-count="$ctrl.initiativeCount"></pc>
+  <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" initiative-count="$ctrl.initiativeCount"></pc>
 
   <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
 
 </div>
-
-{{$ctrl.pcs}}

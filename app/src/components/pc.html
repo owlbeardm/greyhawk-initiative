@@ -1,6 +1,6 @@
 <div class="row border rounded" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
   <div class="col-2">
-    <div ng-if="!$ctrl.editNameMode" class="align-bottom">
+    <div ng-if="!$ctrl.editNameMode" class="pt-1">
       <span>{{$ctrl.pc.name}}</span>
       <a href="#" ng-click="$ctrl.editName()" class="ml-1" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
     </div>
@@ -23,7 +23,7 @@
       <div class="col-9">
         <div class="row">
           <div class="col-6">
-            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode">
+            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode" class="pt-1">
               <span>{{$ctrl.pc.hp}}</span>
               <a href="#" ng-click="$ctrl.editMinusHp()" class="ml-1" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
               <a href="#" ng-click="$ctrl.editHp()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
@@ -56,7 +56,7 @@
             </form>
           </div>
           <div class="col-6">
-            <div ng-if="!$ctrl.editDexMode">
+            <div ng-if="!$ctrl.editDexMode" class="pt-1">
               <span>{{$ctrl.pc.dex}}</span>
               <a href="#" ng-click="$ctrl.editDex()" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
             </div>
@@ -77,19 +77,32 @@
         </div>
       </div>
       <div class="col-3">
-        <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
+        <div class="input-group input-group-sm">
+          <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
+        </div>
       </div>
     </div>
   </div>
   <div class="col-2">
     <div class="btn-group" role="group">
-      <button type="button" class="btn btn-outline-success btn-sm" ng-class="{'active': $ctrl.pc.actions[0]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(0)" title="Standard Action">s.a.</button>
-      <button type="button" class="btn btn-outline-warning btn-sm" ng-class="{'active': $ctrl.pc.actions[1]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(1)" title="Move Action">m.a.</button>
-      <button type="button" class="btn btn-outline-dark btn-sm" ng-class="{'active': $ctrl.pc.actions[2]}" ng-disabled="$ctrl.pc.actions[0] || $ctrl.pc.actions[1]" ng-click="$ctrl.checkAction(2)" title="Full-round Action">f-r.a.</button>
-      <button type="button" class="btn btn-outline-info btn-sm" ng-class="{'active': $ctrl.pc.actions[3]}" ng-click="$ctrl.checkAction(3)" title="Swift Action">sw.a</button>
+      <button type="button" class="btn btn-outline-success btn-sm" ng-class="{'active': !$ctrl.pc.actions[0]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(0)" title="Standard Action">s.a.</button>
+      <button type="button" class="btn btn-outline-warning btn-sm" ng-class="{'active': !$ctrl.pc.actions[1]}" ng-disabled="$ctrl.pc.actions[2]" ng-click="$ctrl.checkAction(1)" title="Move Action">m.a.</button>
+      <button type="button" class="btn btn-outline-dark btn-sm" ng-class="{'active': !$ctrl.pc.actions[2]}" ng-disabled="$ctrl.pc.actions[0] || $ctrl.pc.actions[1]" ng-click="$ctrl.checkAction(2)" title="Full-round Action">f-r.a.</button>
+      <button type="button" class="btn btn-outline-info btn-sm" ng-class="{'active': !$ctrl.pc.actions[3]}" ng-click="$ctrl.checkAction(3)" title="Swift Action">sw.a</button>
     </div>
   </div>
-  <!-- <div class="col">
-    <button ng-click="$ctrl.transferTokens()" class="btn btn-outline-danger float-right"><span class="fas fa-times"></span></button>
-  </div> -->
+
+  <div class="col">
+    <div class="row">
+      <div class="col-11">
+        <!-- <button type="button" class="btn btn-outline-success btn-sm">poisoned</button> -->
+        <a href="#" class="badge badge-pill badge-success ml-auto">poisoned <span class="badge badge-light">9 <span class="fas fa-caret-up"></span></span></a>
+        <a href="#" class="badge badge-pill badge-danger ml-auto">bleed <span class="badge badge-light">4 <span class="fas fa-caret-down"></span></span></a>
+        <a href="#" ng-click="$ctrl.addCondition()" class="badge badge-pill badge-light ml-auto" title="Add condition"><span class="fas fa-plus ml-1 text-secondary"></span></a>
+      </div>
+      <div class="col-1">
+        <button ng-click="$ctrl.delete()" class="btn btn-outline-danger btn-sm float-right" title="Delete"><span class="fas fa-times"></span></button>
+      </div>
+    </div>
+  </div>
 </div>

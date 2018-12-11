@@ -1,0 +1,13 @@
+#!/bin/bash
+
+git stash
+git checkout master
+yarn build
+git checkout gh-pages
+git pull
+rm *.js
+cp -a dist/. .
+git add -A
+git commit -am "release"
+git push
+git checkout master

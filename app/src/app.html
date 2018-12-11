@@ -5,8 +5,8 @@
 
   <div class="row">
     <div class="alert" role="alert">
-      Round <span class="badge badge-light"><strong>{{$ctrl.roundCount}}</strong></span>
-      Initiative count <span class="badge badge-light">{{$ctrl.initiativeCount}}</span>
+      Round <span class="badge badge-light"><strong>{{$ctrl.count.round}}</strong></span>
+      Initiative count <span class="badge badge-light">{{$ctrl.count.initiative}}</span>
       <div class="btn-group ml-2" role="group">
         <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
           Next
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" initiative-count="$ctrl.initiativeCount"></pc>
+  <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" initiative-count="$ctrl.count.initiative"></pc>
 
   <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
 

@@ -60,6 +60,10 @@ function PCController($log, focusService) {
     ctrl.minusHpMode = !ctrl.minusHpMode;
   }
 
+  ctrl.deleteThis = function() {
+    ctrl.delete();
+  }
+
 }
 
 const PCComponent = {
@@ -71,7 +75,8 @@ const PCComponent = {
   ],
   bindings: {
     pc: '<',
-    initiativeCount: '<'
+    initiativeCount: '<',
+    delete: '&'
   }
 }
 

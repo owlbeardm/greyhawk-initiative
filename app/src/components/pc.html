@@ -96,7 +96,33 @@
     <div class="row">
       <div class="col">
         <condition ng-repeat="condition in $ctrl.pc.conditions track by $index" delete="$ctrl.deleteCondition($index)" condition="condition"></condition>
-        <a href="#" ng-click="$ctrl.addCondition()" class="badge badge-pill badge-light ml-auto" title="Add condition"><span class="fas fa-plus ml-1 text-secondary"></span></a>
+        <form name="addCondition" ng-submit="$ctrl.addCondition()" ng-if="$ctrl.addConditionMode" class="mt-1">
+          <div class="form-row align-items-center">
+            <div class="col">
+              <input id="changeNameInput" type="text" class="form-control form-control-sm mb-2" ng-model="$ctrl.condition.name" placeholder="name">
+            </div>
+          </div>
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <input id="changeNameInput" type="number" class="form-control form-control-sm" ng-model="$ctrl.condition.count" placeholder="count">
+            </div>
+            <div class="col-auto">
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" ng-model="$ctrl.condition.descending" id="autoSizingCheck">
+                <label class="form-check-label" for="autoSizingCheck">
+                  descending
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="btn-group float-right" role="group">
+                <button type="submit" class="btn btn-outline-success btn-sm">Add</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" ng-click="$ctrl.changeAddConditionMode()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <a href="#" ng-click="$ctrl.changeAddConditionMode()" class="badge badge-pill badge-light ml-auto" title="Add condition" ng-if="!$ctrl.addConditionMode"><span class="fas fa-plus ml-1 text-secondary"></span></a>
       </div>
       <div class="col-1">
         <button ng-click="$ctrl.deleteThis()" class="btn btn-outline-danger btn-sm float-right" title="Delete"><span class="fas fa-times"></span></button>

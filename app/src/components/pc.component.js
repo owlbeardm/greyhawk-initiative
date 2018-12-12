@@ -5,6 +5,7 @@ function PCController($log, focusService) {
 
   ctrl.$onInit = function() {
     $log.debug('PCController init', ctrl);
+    ctrl.addConditionMode = false;
   }
 
   ctrl.checkAction = function(number) {
@@ -17,7 +18,7 @@ function PCController($log, focusService) {
   }
 
   ctrl.editName = function() {
-    if(!ctrl.editNameMode){
+    if (!ctrl.editNameMode) {
       ctrl.name = ctrl.pc.name;
       focusService.setFocus('changeNameInput');
     }
@@ -30,7 +31,7 @@ function PCController($log, focusService) {
   }
 
   ctrl.editDex = function() {
-    if(!ctrl.editDexMode){
+    if (!ctrl.editDexMode) {
       ctrl.dex = ctrl.pc.dex;
     }
     ctrl.editDexMode = !ctrl.editDexMode;
@@ -42,7 +43,7 @@ function PCController($log, focusService) {
   }
 
   ctrl.editHp = function() {
-    if(!ctrl.editHpMode){
+    if (!ctrl.editHpMode) {
       ctrl.hp = ctrl.pc.hp;
     }
     ctrl.editHpMode = !ctrl.editHpMode;
@@ -54,7 +55,7 @@ function PCController($log, focusService) {
   }
 
   ctrl.editMinusHp = function() {
-    if(!ctrl.minusHpMode){
+    if (!ctrl.minusHpMode) {
       ctrl.hp = 0;
     }
     ctrl.minusHpMode = !ctrl.minusHpMode;
@@ -65,10 +66,16 @@ function PCController($log, focusService) {
   }
 
   ctrl.addCondition = function() {
-    if(!ctrl.pc.conditions){
+    if (!ctrl.pc.conditions) {
       ctrl.pc.conditions = [];
     }
-    ctrl.pc.conditions.push({name:'helooo', count: 7, descending:true});
+    ctrl.pc.conditions.push(ctrl.condition);
+    ctrl.addConditionMode = false;
+    ctrl.condition = {};
+  }
+
+  ctrl.changeAddConditionMode = function() {
+    ctrl.addConditionMode = !ctrl.addConditionMode;
   }
 
   ctrl.deleteCondition = function(index) {

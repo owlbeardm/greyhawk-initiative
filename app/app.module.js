@@ -1,9 +1,13 @@
 'use strict';
 // import './src/css/app.css';
 import './src/components/components.module.js';
+import './src/services/services.module.js';
+// import './src/directives/directives.module.js';
 
 const initiativeApp = angular.module('initiativeApp', [
-    'app.components'
+  'app.components',
+  'app.services'
+  // 'app.directives'
 ]);
 
 

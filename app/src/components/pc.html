@@ -1,4 +1,4 @@
-<div class="row border rounded" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
+<div class="row border rounded mt-1" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
   <div class="col-2">
     <div ng-if="!$ctrl.editNameMode" class="pt-1">
       <span>{{$ctrl.pc.name}}</span>
@@ -99,12 +99,12 @@
         <form name="addCondition" ng-submit="$ctrl.addCondition()" ng-if="$ctrl.addConditionMode" class="mt-1">
           <div class="form-row align-items-center">
             <div class="col">
-              <input id="changeNameInput" type="text" class="form-control form-control-sm mb-2" ng-model="$ctrl.condition.name" placeholder="name">
+              <input id="addConditionName" type="text" class="form-control form-control-sm mb-2" ng-model="$ctrl.condition.name" placeholder="name">
             </div>
           </div>
           <div class="form-row align-items-center">
             <div class="col-auto">
-              <input id="changeNameInput" type="number" class="form-control form-control-sm" ng-model="$ctrl.condition.count" placeholder="count">
+              <input id="addConditionCount" type="number" class="form-control form-control-sm" ng-model="$ctrl.condition.count" placeholder="count">
             </div>
             <div class="col-auto">
               <div class="form-check mb-2">

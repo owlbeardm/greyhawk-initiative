@@ -64,6 +64,18 @@ function PCController($log, focusService) {
     ctrl.delete();
   }
 
+  ctrl.addCondition = function() {
+    if(!ctrl.pc.conditions){
+      ctrl.pc.conditions = [];
+    }
+    ctrl.pc.conditions.push({name:'helooo', count: 7});
+  }
+
+  ctrl.deleteCondition = function(index) {
+    console.log('PCController deleteCondition', index);
+    ctrl.pc.conditions.splice(index, 1);
+  }
+
 }
 
 const PCComponent = {

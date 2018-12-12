@@ -95,9 +95,7 @@
   <div class="col">
     <div class="row">
       <div class="col">
-        <!-- <button type="button" class="btn btn-outline-success btn-sm">poisoned</button> -->
-        <!-- <a href="#" class="badge badge-pill badge-success ml-auto">placeholder <span class="badge badge-light">9 <span class="fas fa-caret-up"></span></span></a> -->
-        <!-- <a href="#" class="badge badge-pill badge-danger ml-auto">placeholder <span class="badge badge-light">4 <span class="fas fa-caret-down"></span></span></a> -->
+        <condition ng-repeat="condition in $ctrl.pc.conditions track by $index" delete="$ctrl.deleteCondition($index)" condition="condition"></condition>
         <a href="#" ng-click="$ctrl.addCondition()" class="badge badge-pill badge-light ml-auto" title="Add condition"><span class="fas fa-plus ml-1 text-secondary"></span></a>
       </div>
       <div class="col-1">

@@ -76,6 +76,7 @@ function PCController($log, focusService) {
 
   ctrl.changeAddConditionMode = function() {
     ctrl.addConditionMode = !ctrl.addConditionMode;
+    focusService.setFocus('addConditionName');
   }
 
   ctrl.deleteCondition = function(index) {

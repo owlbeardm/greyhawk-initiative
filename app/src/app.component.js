@@ -59,6 +59,8 @@ function AppController($log, $scope, $window, focusService) {
 
   ctrl.clear = function() {
     ctrl.pcs = [];
+    ctrl.count.initiative = 1;
+    ctrl.count.round = 1;
   }
 
   ctrl.deletePC = function(index) {

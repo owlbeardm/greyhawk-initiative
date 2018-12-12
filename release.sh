@@ -1,7 +1,5 @@
 #!/bin/bash
 
-git stash
-git checkout master
 yarn build
 git checkout gh-pages
 git pull

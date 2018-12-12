@@ -28,6 +28,17 @@ function AppController($log, $scope, $window, focusService) {
     ctrl.pcs.forEach((pc) => {
       pc.actions = [false, false, false, false];
       pc.initiative = undefined;
+      if(pc.conditions && pc.conditions.length){
+        pc.conditions.forEach((condition) => {
+          if(condition.count){
+            if(condition.descending){
+              condition.count = Math.max(0, condition.count-1);
+            } else {
+              condition.count++;
+            }
+          }
+        });
+      }
     });
     ctrl.count.initiative = 1;
     ctrl.count.round++;

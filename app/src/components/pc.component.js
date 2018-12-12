@@ -68,7 +68,7 @@ function PCController($log, focusService) {
     if(!ctrl.pc.conditions){
       ctrl.pc.conditions = [];
     }
-    ctrl.pc.conditions.push({name:'helooo', count: 7});
+    ctrl.pc.conditions.push({name:'helooo', count: 7, descending:true});
   }
 
   ctrl.deleteCondition = function(index) {

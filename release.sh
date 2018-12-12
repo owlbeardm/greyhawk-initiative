@@ -8,6 +8,6 @@ git pull
 rm *.js
 cp -a dist/. .
 git add -A
-git commit -am "release"
+git commit -am "release $1"
 git push
 git checkout master

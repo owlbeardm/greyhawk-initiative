@@ -1,0 +1,20 @@
+<form name="addPcForm" ng-submit="$ctrl.add()">
+  <div class="row mt-4">
+    <div class="form-group col-2">
+      <label class="col-form-label" for="pcName">Name</label>
+      <input type="text" id="pcName" class="form-control" ng-model="$ctrl.name"></input>
+    </div>
+    <div class="form-group col-1">
+      <label class="col-form-label" for="pcHp">HP</label>
+      <input type="number" id="pcHp" class="form-control" ng-model="$ctrl.hp"></input>
+    </div>
+    <div class="form-group col-1">
+      <label class="col-form-label" for="pcDex">DEX</label>
+      <input type="number" id="pcDex" class="form-control" ng-model="$ctrl.dex"></input>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" ng-disabled="addPcForm.$invalid">Add</button>
+    <button type="button" class="btn btn-danger" ng-click="$ctrl.clearAll()">Clear All</button>
+  </div>
+</form>

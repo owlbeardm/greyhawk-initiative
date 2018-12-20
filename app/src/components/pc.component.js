@@ -50,13 +50,15 @@ function PCController($log, focusService) {
   }
 
   ctrl.minusHp = function() {
-    ctrl.pc.hp = ctrl.pc.hp - ctrl.hp;
+    if (ctrl.hp) 
+      ctrl.pc.hp = ctrl.pc.hp - ctrl.hp;
     ctrl.editMinusHp();
   }
 
   ctrl.editMinusHp = function() {
     if (!ctrl.minusHpMode) {
-      ctrl.hp = 0;
+      focusService.setFocus('minusHpId');
+      ctrl.hp = undefined;
     }
     ctrl.minusHpMode = !ctrl.minusHpMode;
   }
@@ -89,9 +91,7 @@ function PCController($log, focusService) {
 const PCComponent = {
   template: require('./pc.html'),
   controller: [
-    '$log',
-    'focusService',
-    PCController
+    '$log', 'focusService', PCController
   ],
   bindings: {
     pc: '<',

@@ -1,84 +1,53 @@
 <div class="row border rounded mt-1" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
-  <div class="col-2">
-    <div ng-if="!$ctrl.editNameMode" class="pt-1">
-      <span>{{$ctrl.pc.name}}</span>
-      <a href="#" ng-click="$ctrl.editName()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+  <div class="col-1">
+    <div ng-if="!$ctrl.editNameMode" class="form-group">
+      <input id="changeNameInput" type="text" class="form-control" ng-model="$ctrl.pc.name" placeholder="Name">
     </div>
-    <form ng-submit="$ctrl.changeName()" ng-if="$ctrl.editNameMode">
-      <div class="input-group input-group-sm">
-        <input id="changeNameInput" type="text" class="form-control" ng-model="$ctrl.name">
-        <div class="input-group-append">
-          <button type="submit" class="btn btn-outline-success btn-sm">
-            <span class="fas fa-check"></span>
-          </button>
-          <button type="button" ng-click="$ctrl.editName()" class="btn btn-outline-danger btn-sm">
-            <span class="fas fa-times"></span>
-          </button>
-        </div>
-      </div>
-    </form>
   </div>
   <div class="col-3">
     <div class="row">
-      <div class="col-9">
+      <div class="col-7">
         <div class="row">
-          <div class="col-6">
-            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode" class="pt-1">
-              <span>{{$ctrl.pc.hp}}</span>
-              <a href="#" ng-click="$ctrl.editMinusHp()" class="badge badge-light ml-auto" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
-              <a href="#" ng-click="$ctrl.editHp()" class="badge badge-light" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
-            </div>
-            <form name="changeHp" ng-submit="$ctrl.changeHp()" ng-if="$ctrl.editHpMode">
-              <div class="input-group input-group-sm">
-                <input type="number" class="form-control" ng-model="$ctrl.hp">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-success btn-sm">
-                    <span class="fas fa-check"></span>
-                  </button>
-                  <button type="button" ng-click="$ctrl.editHp()" class="btn btn-outline-danger btn-sm">
-                    <span class="fas fa-times"></span>
-                  </button>
+          <div class="col-8">
+            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode">
+              <div class="form-group has-success">
+                <div class="input-group">
+                  <input type="number" class="form-control" ng-model="$ctrl.pc.hp">
+                  <div class="input-group-append">
+                    <button ng-click="$ctrl.editMinusHp()" class="btn btn-outline-warning btn-sm btn-round ml-auto" title="Decrease hit points" ng-if="!$ctrl.addConditionMode">hp <span class="fas fa-minus ml-1 text"></span></button>
+                  </div>
                 </div>
               </div>
-            </form>
+            </div>
             <form name="minusHp" ng-submit="$ctrl.minusHp()" ng-if="$ctrl.minusHpMode">
-              <div class="input-group input-group-sm">
-                <input type="number" class="form-control" ng-model="$ctrl.hp">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-success btn-sm">
+              <div class="form-group">
+                <div class="input-group">
+                  <input id="minusHpId" type="number" class="form-control" ng-model="$ctrl.hp">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-success btn-sm">
                     <span class="fas fa-check"></span>
                   </button>
-                  <button type="button" ng-click="$ctrl.editMinusHp()" class="btn btn-outline-danger btn-sm">
+                    <button type="button" ng-click="$ctrl.editMinusHp()" class="btn btn-outline-danger btn-sm">
                     <span class="fas fa-times"></span>
                   </button>
+                  </div>
                 </div>
               </div>
             </form>
           </div>
-          <div class="col-6">
-            <div ng-if="!$ctrl.editDexMode" class="pt-1">
-              <span>{{$ctrl.pc.dex}}</span>
-              <a href="#" ng-click="$ctrl.editDex()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+          <div class="col-4">
+            <div class="form-group has-success">
+              <input type="number" class="form-control" ng-model="$ctrl.pc.dex">
+              <span class="form-control-feedback text-muted"><small>dex</small></span>
             </div>
-            <form name="changeDex" ng-submit="$ctrl.changeDex()" ng-if="$ctrl.editDexMode">
-              <div class="input-group input-group-sm">
-                <input type="number" class="form-control" ng-model="$ctrl.dex">
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-success btn-sm">
-                    <span class="fas fa-check"></span>
-                  </button>
-                  <button type="button" ng-click="$ctrl.editDex()" class="btn btn-outline-danger btn-sm">
-                    <span class="fas fa-times"></span>
-                  </button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
+      <div class="col-1">
+        </div>
       <div class="col-3">
-        <div class="input-group input-group-sm">
-          <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
+        <div class="form-group">
+          <input type="number" class="form-control text-center" placeholder="INITIATIVE" ng-model="$ctrl.pc.initiative">
         </div>
       </div>
     </div>
@@ -92,10 +61,12 @@
     </div>
   </div>
 
-  <div class="col">
-    <div class="row">
+  <div class="col ">
+    <div class="row ">
       <div class="col">
-        <condition ng-repeat="condition in $ctrl.pc.conditions track by $index" delete="$ctrl.deleteCondition($index)" condition="condition"></condition>
+        <div class="btn-group ">
+          <condition ng-repeat="condition in $ctrl.pc.conditions track by $index" delete="$ctrl.deleteCondition($index)" condition="condition"></condition>
+        </div>
         <form name="addCondition" ng-submit="$ctrl.addCondition()" ng-if="$ctrl.addConditionMode" class="mt-1">
           <div class="form-row align-items-center">
             <div class="col">
@@ -107,9 +78,12 @@
               <input id="addConditionCount" type="number" class="form-control form-control-sm" ng-model="$ctrl.condition.count" placeholder="count">
             </div>
             <div class="col-auto">
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" ng-model="$ctrl.condition.descending" id="autoSizingCheck">
-                <label class="form-check-label" for="autoSizingCheck">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" ng-model="$ctrl.condition.descending">
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
                   descending
                 </label>
               </div>
@@ -122,10 +96,14 @@
             </div>
           </div>
         </form>
-        <a href="#" ng-click="$ctrl.changeAddConditionMode()" class="badge badge-pill badge-light ml-auto" title="Add condition" ng-if="!$ctrl.addConditionMode"><span class="fas fa-plus ml-1 text-secondary"></span></a>
+        <div class="btn-group ">
+          <button ng-click="$ctrl.changeAddConditionMode()" class="btn btn-outline-primary btn-sm btn-round ml-auto" title="Add condition" ng-if="!$ctrl.addConditionMode"><span class="fas fa-plus"></span></button>
+        </div>
       </div>
       <div class="col-1">
-        <button ng-click="$ctrl.deleteThis()" class="btn btn-outline-danger btn-sm float-right" title="Delete"><span class="fas fa-times"></span></button>
+        <div class="btn-group ">
+          <button ng-click="$ctrl.deleteThis()" class="btn btn-outline-danger btn-sm float-right" title="Delete"><span class="fas fa-times"></span></button>
+        </div>
       </div>
     </div>
   </div>

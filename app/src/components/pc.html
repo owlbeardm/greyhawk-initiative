@@ -1,8 +1,9 @@
 <div class="row border rounded mt-1" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
   <div class="col-2">
-    <div ng-if="!$ctrl.editNameMode" class="pt-1">
-      <span>{{$ctrl.pc.name}}</span>
-      <a href="#" ng-click="$ctrl.editName()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+    <div ng-if="!$ctrl.editNameMode" class="form-group">
+      <input id="changeNameInput" type="text" class="form-control" ng-model="$ctrl.pc.name">
+      <!-- <span>{{$ctrl.pc.name}}</span> -->
+      <!-- <a href="#" ng-click="$ctrl.editName()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a> -->
     </div>
     <form ng-submit="$ctrl.changeName()" ng-if="$ctrl.editNameMode">
       <div class="input-group input-group-sm">
@@ -23,10 +24,12 @@
       <div class="col-9">
         <div class="row">
           <div class="col-6">
-            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode" class="pt-1">
-              <span>{{$ctrl.pc.hp}}</span>
-              <a href="#" ng-click="$ctrl.editMinusHp()" class="badge badge-light ml-auto" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a>
-              <a href="#" ng-click="$ctrl.editHp()" class="badge badge-light" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode" class="form-group has-success">
+              <!-- <span>{{$ctrl.pc.hp}}</span> -->
+              <input type="number" class="form-control" ng-model="$ctrl.pc.hp">
+              <span class="form-control-feedback text-muted">HP</span>
+              <!-- <a href="#" ng-click="$ctrl.editMinusHp()" class="badge badge-light ml-auto" title="Decrease hit points"><span class="fas fa-minus ml-1 text-secondary"></span></a> -->
+              <!-- <a href="#" ng-click="$ctrl.editHp()" class="badge badge-light" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a> -->
             </div>
             <form name="changeHp" ng-submit="$ctrl.changeHp()" ng-if="$ctrl.editHpMode">
               <div class="input-group input-group-sm">
@@ -56,9 +59,11 @@
             </form>
           </div>
           <div class="col-6">
-            <div ng-if="!$ctrl.editDexMode" class="pt-1">
-              <span>{{$ctrl.pc.dex}}</span>
-              <a href="#" ng-click="$ctrl.editDex()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a>
+            <div ng-if="!$ctrl.editDexMode" class="form-group has-success">
+              <!-- <span>{{$ctrl.pc.dex}}</span> -->
+              <input type="number" class="form-control" ng-model="$ctrl.pc.dex">
+              <span class="form-control-feedback text-muted">DEX</span>
+              <!-- <a href="#" ng-click="$ctrl.editDex()" class="badge badge-light ml-auto" title="Edit"><span class="fas fa-pencil-alt ml-1 text-secondary"></span></a> -->
             </div>
             <form name="changeDex" ng-submit="$ctrl.changeDex()" ng-if="$ctrl.editDexMode">
               <div class="input-group input-group-sm">
@@ -77,7 +82,7 @@
         </div>
       </div>
       <div class="col-3">
-        <div class="input-group input-group-sm">
+        <div class="form-group has-success">
           <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
         </div>
       </div>
@@ -107,9 +112,12 @@
               <input id="addConditionCount" type="number" class="form-control form-control-sm" ng-model="$ctrl.condition.count" placeholder="count">
             </div>
             <div class="col-auto">
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" ng-model="$ctrl.condition.descending" id="autoSizingCheck">
-                <label class="form-check-label" for="autoSizingCheck">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" ng-model="$ctrl.condition.descending">
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
                   descending
                 </label>
               </div>

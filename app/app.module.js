@@ -1,5 +1,7 @@
 'use strict';
-// import './src/css/app.css';
+import './src/css/bootstrap.min.css';
+import './src/css/material-dashboard.css';
+
 import './src/components/components.module.js';
 import './src/services/services.module.js';
 // import './src/directives/directives.module.js';

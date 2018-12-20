@@ -1,13 +1,11 @@
-<div class="container-fluid">
-  <div class="row">
-    <pageheader title="OwlbearDM Tracker" subtitle="For Every-Round Initiative"></pageheader>
-  </div>
+<pageheader title="OwlbearDM Tracker" subtitle="Every-Round Initiative"></pageheader>
 
-  <div class="row">
-    <div class="alert" role="alert">
-      Round <span class="badge badge-light"><strong>{{$ctrl.count.round}}</strong></span>
-      Initiative count <span class="badge badge-light">{{$ctrl.count.initiative}}</span>
-      <div class="btn-group ml-2" role="group">
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Round <span class="badge badge-light">{{$ctrl.count.round}}</span></h4>
+      <h4 class="card-title">Initiative count <span class="badge badge-light">{{$ctrl.count.initiative}}</span></h4>
+      <div class="btn-group" role="group">
         <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
           Next
         </button>
@@ -19,41 +17,11 @@
         </button>
       </div>
     </div>
-  </div>
-
-
-
-  <div class="row mt-4 text-muted">
-    <div class="col-2">
-      Name
+    <div class="card-body">
+      <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" initiative-count="$ctrl.count.initiative"></pc>
     </div>
-    <div class="col-3">
-      <div class="row">
-        <div class="col-9">
-          <div class="row">
-            <div class="col-6">
-              HP
-            </div>
-            <div class="col-6">
-              DEX
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          Init
-        </div>
-      </div>
-    </div>
-    <div class="col-2">
-      Combat Actions
-    </div>
-    <div class="col">
-      Conditions and Effects
+    <div class="card-footer">
+      <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
     </div>
   </div>
-
-  <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" initiative-count="$ctrl.count.initiative"></pc>
-
-  <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
-
 </div>

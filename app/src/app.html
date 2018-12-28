@@ -1,27 +1,55 @@
-<pageheader title="OwlbearDM Tracker" subtitle="Every-Round Initiative"></pageheader>
+<div class="wrapper">
+  <div class="main-panel">
+    <pageheader title="OwlbearDM Tracker" subtitle="Every-Round Initiative"></pageheader>
 
-<div class="container-fluid">
-  <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Round <span class="badge badge-light">{{$ctrl.count.round}}</span></h4>
-      <h4 class="card-title">Initiative count <span class="badge badge-light">{{$ctrl.count.initiative}}</span></h4>
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
-          Next
-        </button>
-        <button type="button" class="btn btn-outline-danger btn-sm" ng-click="$ctrl.endRound()">
-          End Round
-        </button>
-        <button type="button" class="btn btn-outline-secondary btn-sm" ng-click="$ctrl.reset()">
-          Reset
-        </button>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Round <span class="badge badge-light">{{$ctrl.count.round}}</span></h4>
+            <h4 class="card-title">Initiative count <span class="badge badge-light">{{$ctrl.count.initiative}}</span></h4>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
+                Next
+              </button>
+              <button type="button" class="btn btn-outline-danger btn-sm" ng-click="$ctrl.endRound()">
+                End Round
+              </button>
+              <button type="button" class="btn btn-outline-secondary btn-sm" ng-click="$ctrl.reset()">
+                Reset
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" initiative-count="$ctrl.count.initiative"></pc>
+          </div>
+          <div class="card-footer">
+            <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card-body">
-      <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" initiative-count="$ctrl.count.initiative"></pc>
-    </div>
-    <div class="card-footer">
-      <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>
-    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav class="float-left">
+          <ul>
+            <li>
+              <a href="https://github.com/owlbeardm">
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="">
+                About
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright float-right">
+          2018 by <a href="https://owlbeardm.com/" target="_blank">OwlbearDM</a>
+        </div>
+      </div>
+    </footer>
   </div>
 </div>

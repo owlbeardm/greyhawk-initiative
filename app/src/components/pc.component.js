@@ -6,6 +6,8 @@ function PCController($log, focusService) {
   ctrl.$onInit = function() {
     $log.debug('PCController init', ctrl);
     ctrl.addConditionMode = false;
+    ctrl.condition = {};
+    ctrl.condition.descending = true;
   }
 
   ctrl.checkAction = function(number) {
@@ -72,6 +74,7 @@ function PCController($log, focusService) {
     ctrl.pc.conditions.push(ctrl.condition);
     ctrl.addConditionMode = false;
     ctrl.condition = {};
+    ctrl.condition.descending = true;
   }
 
   ctrl.changeAddConditionMode = function() {

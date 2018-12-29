@@ -6,8 +6,8 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Round <span class="badge badge-light">{{$ctrl.count.round}}</span></h4>
-            <h4 class="card-title">Initiative count <span class="badge badge-light">{{$ctrl.count.initiative}}</span></h4>
+            <h4 class="card-title">Round <small class="text-info">{{$ctrl.count.round}}</small></h4>
+            <h4 class="card-title">Initiative count <small class="text-info">{{$ctrl.count.initiative}}</small></h4>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-outline-primary btn-sm" ng-click="$ctrl.nextCount()">
                 Next
@@ -53,3 +53,4 @@
     </footer>
   </div>
 </div>
+<span class="notification">5</span>

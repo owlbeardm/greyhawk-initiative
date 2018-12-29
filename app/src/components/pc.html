@@ -1,60 +1,53 @@
 <div class="row border rounded mt-1" ng-class="{'border-primary': $ctrl.initiativeCount == $ctrl.pc.initiative}">
-  <div class="col-1">
-    <div ng-if="!$ctrl.editNameMode" class="form-group">
-      <input id="changeNameInput" type="text" class="form-control" ng-model="$ctrl.pc.name" placeholder="Name">
+  <div class="col-xl-auto">
+    <div class="row">
+      <div class="col-auto">
+        <div ng-if="!$ctrl.editNameMode" class="form-group" style="width: 170px;">
+          <input id="changeNameInput" type="text" class="form-control" ng-model="$ctrl.pc.name" placeholder="Name">
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-xl-auto">
     <div class="row">
-      <div class="col-7">
-        <div class="row">
-          <div class="col-8">
-            <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode">
-              <div class="form-group has-success">
-                <div class="input-group">
-                  <input type="number" class="form-control" ng-model="$ctrl.pc.hp">
-                  <div class="input-group-append">
-                    <button ng-click="$ctrl.editMinusHp()" class="btn btn-outline-warning btn-sm btn-round ml-auto" title="Decrease hit points" ng-if="!$ctrl.addConditionMode">hp <span class="fas fa-minus ml-1 text"></span></button>
-                  </div>
-                </div>
+      <div class="col-auto">
+        <div ng-if="!$ctrl.editHpMode && !$ctrl.minusHpMode" style="width: 145px;">
+          <div class="form-group has-success">
+            <div class="input-group">
+              <input type="number" class="form-control" ng-model="$ctrl.pc.hp">
+              <div class="input-group-append">
+                <button ng-click="$ctrl.editMinusHp()" class="btn btn-outline-warning btn-sm btn-round ml-auto" title="Decrease hit points" ng-if="!$ctrl.addConditionMode">hp <span class="fas fa-minus ml-1 text"></span></button>
               </div>
             </div>
-            <form name="minusHp" ng-submit="$ctrl.minusHp()" ng-if="$ctrl.minusHpMode">
-              <div class="form-group">
-                <div class="input-group">
-                  <input id="minusHpId" type="number" class="form-control" ng-model="$ctrl.hp">
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-outline-success btn-sm">
-                    <span class="fas fa-check"></span>
-                  </button>
-                    <button type="button" ng-click="$ctrl.editMinusHp()" class="btn btn-outline-danger btn-sm">
-                    <span class="fas fa-times"></span>
-                  </button>
-                  </div>
-                </div>
-              </div>
-            </form>
           </div>
-          <div class="col-4">
-            <div class="form-group has-success">
-              <input type="number" class="form-control" ng-model="$ctrl.pc.dex">
-              <span class="form-control-feedback text-muted"><small>dex</small></span>
+        </div>
+        <form name="minusHp" ng-submit="$ctrl.minusHp()" ng-if="$ctrl.minusHpMode" style="width: 145px;">
+          <div class="form-group">
+            <div class="input-group">
+              <input id="minusHpId" type="number" class="form-control" ng-model="$ctrl.hp">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-success btn-sm">
+                  <span class="fas fa-check"></span>
+                </button>
+                <button type="button" ng-click="$ctrl.editMinusHp()" class="btn btn-outline-danger btn-sm">
+                  <span class="fas fa-times"></span>
+                </button>
+              </div>
             </div>
           </div>
         </form>
       </div>
-      <div class="col-1">
-        </div>
-      <div class="col-3">
-        <div class="form-group">
-          <input type="number" class="form-control text-center" placeholder="INITIATIVE" ng-model="$ctrl.pc.initiative">
+      <div class="col-auto" style="width: 75px;">
+        <div class="form-group has-success">
+          <input type="number" class="form-control" ng-model="$ctrl.pc.dex">
+          <span class="form-control-feedback text-muted"><small>dex</small></span>
         </div>
       </div>
     </div>
   </div>
   <div class="col-auto">
-    <div class="form-group has-success" style="width: 80px;">
-      <input type="number" class="form-control" ng-class="{'border-warning': !$ctrl.pc.initiative}" ng-model="$ctrl.pc.initiative">
+    <div class="form-group" style="width: 80px;">
+      <input type="number" class="form-control text-center" placeholder="INITIATIVE" ng-model="$ctrl.pc.initiative">
     </div>
   </div>
   <div class="col-auto">

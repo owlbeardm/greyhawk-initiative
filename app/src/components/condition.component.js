@@ -18,6 +18,18 @@ function ConditionController($log) {
     ctrl.showDelete = !ctrl.showDelete;
   }
 
+  ctrl.changeCountUp = function(i) {
+    ctrl.changeCount(1);
+  }
+  ctrl.changeCountDown = function(i) {
+    ctrl.changeCount(-1);
+  }
+
+  ctrl.changeCount = function(i) {
+    console.log('ctrl.changeCount')
+    ctrl.condition.count = ctrl.condition.count+i;
+  }
+
 }
 
 const ConditionComponent = {

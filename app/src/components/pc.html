@@ -66,15 +66,35 @@
           <input id="addConditionCount" type="number" class="form-control form-control-sm" ng-model="$ctrl.condition.count" placeholder="count">
         </div>
         <div class="col-auto">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" ng-model="$ctrl.condition.descending">
-              <span class="form-check-sign">
+          <div class="form-group">
+            <div class="form-check form-check-radio">
+              <label class="form-check-label text-dark">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" ng-model="$ctrl.condition.state" ng-value="0">
+                Constant
+                <span class="circle">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+            <div class="form-check form-check-radio">
+              <label class="form-check-label text-dark">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" ng-model="$ctrl.condition.state" ng-value="1">
+                Descending
+                <span class="circle">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+          <div class="form-check form-check-radio">
+            <label class="form-check-label text-dark">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" ng-model="$ctrl.condition.state" ng-value="2">
+              Ascending
+              <span class="circle">
                 <span class="check"></span>
               </span>
-              descending
             </label>
           </div>
+        </div>
         </div>
         <div class="col">
           <div class="btn-group float-right" role="group">

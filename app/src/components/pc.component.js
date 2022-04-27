@@ -73,14 +73,18 @@ function PCController($log, focusService) {
     if (!ctrl.pc.conditions) {
       ctrl.pc.conditions = [];
     }
+    if(ctrl.condition.state){
+      ctrl.condition.count = 0;
+    }
     ctrl.pc.conditions.push(ctrl.condition);
     ctrl.addConditionMode = false;
     ctrl.condition = {};
-    ctrl.condition.descending = true;
+    ctrl.condition.state = 0;
   }
 
   ctrl.changeAddConditionMode = function() {
     ctrl.addConditionMode = !ctrl.addConditionMode;
+    ctrl.condition.state = 0;
     focusService.setFocus('addConditionName');
   }
 

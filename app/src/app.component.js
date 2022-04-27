@@ -30,10 +30,10 @@ function AppController($log, $scope, $window, focusService) {
       // pc.initiative = undefined;
       if(pc.conditions && pc.conditions.length){
         pc.conditions.forEach((condition) => {
-          if(condition.count){
-            if(condition.descending){
+          if(condition.count || condition.state){
+            if(condition.state === 1){
               condition.count = Math.max(0, condition.count-1);
-            } else {
+            } else if (condition.state === 2) {
               condition.count++;
             }
           }

@@ -9,13 +9,14 @@ function AddPCController($log, focusService) {
       name: ctrl.name,
       hp: ctrl.hp,
       dex: ctrl.dex,
-      initiative: undefined,
+      initiative: ctrl.initiative,
       actions: [false, false, false, false]
     }
     ctrl.pcs.push(pc);
     ctrl.name = undefined;
     ctrl.hp = undefined;
     ctrl.dex = undefined;
+    ctrl.initiative = undefined;
     focusService.setFocus('pcName');
   }
 

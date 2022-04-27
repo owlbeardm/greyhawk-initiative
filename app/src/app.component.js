@@ -26,8 +26,8 @@ function AppController($log, $scope, $window, focusService) {
 
   ctrl.endRound = function() {
     ctrl.pcs.forEach((pc) => {
-      pc.actions = [false, false, false, false];
-      pc.initiative = undefined;
+      pc.actions = [false, false, false, pc.actions[3]];
+      // pc.initiative = undefined;
       if(pc.conditions && pc.conditions.length){
         pc.conditions.forEach((condition) => {
           if(condition.count){
@@ -40,32 +40,43 @@ function AppController($log, $scope, $window, focusService) {
         });
       }
     });
-    ctrl.count.initiative = 1;
+    ctrl.count.initiative = -1;
+    ctrl.nextCount();
     ctrl.count.round++;
   }
 
   ctrl.nextCount = function() {
-    ctrl.count.initiative++;
+    if(ctrl.pcs.length>ctrl.count.initiative+1){
+      ctrl.count.initiative++;
+      ctrl.pcs[ctrl.count.initiative].actions[3] = false;
+    } else {
+      ctrl.endRound();
+    }
   }
 
   ctrl.reset = function() {
     ctrl.pcs.forEach((pc) => {
-      pc.actions = [false, false, false, false];
-      pc.initiative = undefined;
+      pc.actions = [false, false, false, pc.actions[3]];
     });
-    ctrl.count.initiative = 1;
+    ctrl.count.initiative = 0;
     ctrl.count.round = 1;
+    ctrl.sortPC();
   }
 
   ctrl.clear = function() {
     ctrl.pcs = [];
-    ctrl.count.initiative = 1;
+    ctrl.count.initiative = 0;
     ctrl.count.round = 1;
   }
 
   ctrl.deletePC = function(index) {
     console.log('AppController deletePC', index);
     ctrl.pcs.splice(index, 1);
+  }
+
+  ctrl.sortPC =  function() {
+    console.log('AppController sortPC');
+    ctrl.pcs = ctrl.pcs.sort((p1,p2)=>p1.initiative===p2.initiative?p2.dex-p1.dex:p2.initiative-p1.initiative);
   }
 
   $scope.$watch('$ctrl.pcs', function(newVal, oldVal) {

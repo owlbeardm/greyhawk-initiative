@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="card-body">
-          <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" initiative-count="$ctrl.count.initiative"></pc>
+          <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" selected="$ctrl.count.initiative === $index"></pc>
         </div>
         <div class="card-footer">
           <addpc pcs="$ctrl.pcs" clear="$ctrl.clear()"></addpc>

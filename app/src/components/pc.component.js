@@ -98,7 +98,7 @@ const PCComponent = {
   ],
   bindings: {
     pc: '<',
-    initiativeCount: '<',
+    selected: '<',
     delete: '&'
   }
 }

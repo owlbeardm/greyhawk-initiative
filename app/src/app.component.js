@@ -76,11 +76,15 @@ function AppController($log, $scope, $window, focusService) {
 
   ctrl.sortPC =  function() {
     console.log('AppController sortPC');
+    const pc = ctrl.pcs[ctrl.count.initiative];
+    console.log('AppController sortPC', ctrl.count.initiative, pc);
     ctrl.pcs = ctrl.pcs.sort((p1,p2)=>p1.initiative===p2.initiative?p2.dex-p1.dex:p2.initiative-p1.initiative);
+    ctrl.count.initiative = ctrl.pcs.findIndex(value=>Object.is(value,pc));
   }
 
   $scope.$watch('$ctrl.pcs', function(newVal, oldVal) {
     console.log('AppController changed', newVal, oldVal);
+    ctrl.sortPC();
     localStorage.setItem(STORAGE_PCS, JSON.stringify(newVal));
   }, true);
 

@@ -73,7 +73,7 @@ function PCController($log, focusService) {
     if (!ctrl.pc.conditions) {
       ctrl.pc.conditions = [];
     }
-    if(ctrl.condition.state){
+    if(ctrl.condition.state && !ctrl.condition.count){
       ctrl.condition.count = 0;
     }
     ctrl.pc.conditions.push(ctrl.condition);

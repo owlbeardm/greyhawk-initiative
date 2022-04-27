@@ -28,7 +28,16 @@ function AppController($log, $scope, $window, focusService) {
     ctrl.pcs.forEach((pc) => {
       pc.actions = [false, false, false, pc.actions[3]];
       // pc.initiative = undefined;
-      if(pc.conditions && pc.conditions.length){
+    });
+    ctrl.count.initiative = -1;
+    ctrl.nextCount();
+    ctrl.count.round++;
+  }
+
+  ctrl.nextCount = function() {
+    if(ctrl.pcs.length>ctrl.count.initiative+1){
+      const pc = ctrl.pcs[ctrl.count.initiative];
+      if(pc && pc.conditions && pc.conditions.length){
         pc.conditions.forEach((condition) => {
           if(condition.count || condition.state){
             if(condition.state === 1){
@@ -39,14 +48,6 @@ function AppController($log, $scope, $window, focusService) {
           }
         });
       }
-    });
-    ctrl.count.initiative = -1;
-    ctrl.nextCount();
-    ctrl.count.round++;
-  }
-
-  ctrl.nextCount = function() {
-    if(ctrl.pcs.length>ctrl.count.initiative+1){
       ctrl.count.initiative++;
       ctrl.pcs[ctrl.count.initiative].actions[3] = false;
     } else {

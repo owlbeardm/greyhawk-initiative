@@ -21,6 +21,16 @@
           </div>
         </div>
         <div class="card-body">
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-primary">primary</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-success">success</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-danger">danger</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-warning">warning</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-info">info</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-light">light</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-dark">dark</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-muted">muted</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-secondary">secondary</a>
+          <a href="#" class="btn btn-sm btn-round ml-auto btn-white">white</a>
           <pc ng-repeat="pc in $ctrl.pcs track by $index" pc="pc" delete="$ctrl.deletePC($index)" selected="$ctrl.count.initiative === $index"></pc>
         </div>
         <div class="card-footer">

@@ -9,6 +9,12 @@ function ConditionController($log) {
     ctrl.showDelete = false;
   }
 
+  ctrl.getConditionColor  = function() {
+    if(ctrl.condition.count === 0 ) return 'btn-muted';
+    // {'': $ctrl.condition.count == 0, 'btn-primary': $ctrl.condition.count !== 0}
+    return "btn-primary";
+  }
+
   ctrl.deleteThis = function() {
     $log.debug('ConditionController deleteThis ');
     ctrl.delete();

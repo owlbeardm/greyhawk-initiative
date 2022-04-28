@@ -8,7 +8,56 @@ function ConditionController($log) {
     $log.debug('ConditionController init ');
     ctrl.showDelete = false;
   }
-
+  // "info"
+  // DOOMED
+  // DYING
+  // UNCONSCIOUS
+  // WOUNDED
+  
+  // "secondary"
+  // HIDDEN
+  // OBSERVED
+  // UNDETECTED
+  // UNNOTICED
+  
+  // "warning"
+  // CLUMSY
+  // DRAINED
+  // ENFEEBLED
+  // STUPEFIED
+  
+  // "warning"
+  // BLINDED
+  // CONCEALED
+  // DAZZLED
+  // DEAFENED
+  // INVISIBLE
+  
+  
+  // "danger"
+  // BROKEN
+  // CONFUSED
+  // CONTROLLED
+  // ENCUMBERED
+  // FASCINATED
+  // FATIGUED
+  // FLAT-FOOTED
+  // FLEEING
+  // FRIGHTENED
+  // FEAR
+  // GRABBED
+  // HOSTILE
+  // IMMOBILIZED
+  // PARALYZED
+  // PERSISTENT DAMAGE
+  // PETRIFIED
+  // PRONE
+  // RESTRAINED
+  // SICKENED
+  // SLOWED
+  // STUNNED
+  
+  
   ctrl.getConditionColor  = function() {
     if(ctrl.condition.count === 0 ) return 'btn-muted';
     // {'': $ctrl.condition.count == 0, 'btn-primary': $ctrl.condition.count !== 0}
